@@ -88,7 +88,6 @@
   async function getData() {
     await axios.get(url + "es").then((data) => {
       canciones = data.data.result;
-      console.log("Salida de data: ", data.data.result)
       tbody.innerHTML = "";
       //console.log(canciones)
       canciones.forEach((c, i) => {
@@ -114,6 +113,10 @@
   }
 
   function nuevaCancion() {
+    if (!cancion.value || !artista.value || !tono.value) {
+    alert('Favor, complete todos los campos');
+    return;
+  }
     cancion;
     artista;
     tono;
@@ -122,12 +125,10 @@
       artista: artista.value,
       tono: tono.value,
     };
-    console.log("Salida data del post: ", data);
     axios.post(url, data).then(() => getData());
   }
 
   function eliminarCancion(i, id) {
-    console.log("Salida del id delete: ", id)
     axios.delete(url + "?id=" + id).then(() => {
       alert("Canción " + canciones[i].titulo + " eliminada");
       getData();
@@ -146,8 +147,7 @@
   }
 
   function editarCancion(id) {
-    console.log("Salida del id desde front: ", id)
-    console.log(url + "/"  +id)
+
     axios.put(url + "/"  +id , {
         titulo: cancion.value,
         artista: artista.value,
