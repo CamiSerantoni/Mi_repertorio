@@ -3,6 +3,6 @@ import { deleteCancion } from '../controller/repertorioHandler.js';
 
 const router = express.Router();
 
-router.get('/', deleteCancion )
+router.delete('/', deleteCancion )
 
 export default router;

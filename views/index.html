@@ -127,7 +127,8 @@
   }
 
   function eliminarCancion(i, id) {
-    axios.delete("eliminar/" + url + "?id=" + id).then(() => {
+    console.log("Salida del id delete: ", id)
+    axios.delete(url + "?id=" + id).then(() => {
       alert("Canción " + canciones[i].titulo + " eliminada");
       getData();
     });
@@ -145,8 +146,9 @@
   }
 
   function editarCancion(id) {
-    axios
-      .put("editar/" +url + "/" + id, {
+    console.log("Salida del id desde front: ", id)
+    console.log(url + "/"  +id)
+    axios.put(url + "/"  +id , {
         titulo: cancion.value,
         artista: artista.value,
         tono: tono.value,

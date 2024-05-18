@@ -1,3 +1,4 @@
+import Put_Cancion from "../models/Put_Cancion.js";
 import Delete_Cancion from "../models/Delete_Cancion.js";
 import Get_Repertorios from "../models/Get_Repertorios.js";
 import Post_Repertorio from "../models/Post_Repertorio.js";
@@ -21,20 +22,29 @@ export const getCanciones = async (req, res) => {
 }
 
 export const deleteCancion = async (req, res) => {
-    /* try {
-        const { id } = req.params;
-        const deleteData = await Delete_Cancion(id);
-        res.status(200).json({result: deleteData.rows});
+   try {
+        const id  = req.query.id;
+        const response = await Delete_Cancion(id);
+        res.status(200).send(response.rows);
     } catch (error) {
         res.status(500).json({ error: "Error al borrar la cancion" });
-    } */
+    }
 }
 
 export const putCancion = async (req, res) => {
-try {
-    
+   
+    try {
+       // console.log("Salid req", req)
+    const {id}  = req.params;
+    console.log("Salida de req.params de PUT /cancion: ", req.params.id)
+    const { titulo, artista, tono } = req.body;
+    console.log("Salida de req.body de PUT /cancion: ", req.body)
+    console.log("Salida del id de la cancion: ", id)
+    const putData = await Put_Cancion({id,titulo, artista, tono});
+    console.log("Salida: ", putData)
+    res.status(200).send(putData.rows);   
 } catch (error) {
-    
+    res.status(500).json({ error: "Error al actualizar la cancion" });
 }
 
 

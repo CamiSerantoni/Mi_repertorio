@@ -37,8 +37,8 @@ class Server {
             rootHome:'/',
             rootPost:'/cancion',
             rootGet:'/canciones',
-            rootDelete:'/eliminar',
-            rootPut:'/editar',
+            rootDelete:'/cancion',
+            rootPut:'/cancion',
             
         }
 

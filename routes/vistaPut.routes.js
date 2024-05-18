@@ -3,6 +3,6 @@ import { putCancion } from '../controller/repertorioHandler.js';
 
 const router = express.Router();
 
-router.get('/', putCancion )
+router.put('/:id', putCancion )
 
 export default router;
