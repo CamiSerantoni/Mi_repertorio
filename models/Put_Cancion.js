@@ -5,7 +5,6 @@ console.log("Salida de cancion: ",cancion)
 let client
 
 const values = Object.values(cancion)
-console.log("Salida de values: ",values)
 const consulta = {
     text: "UPDATE canciones SET titulo = $2, artista = $3, tono = $4 WHERE id = $1 returning *",
     values

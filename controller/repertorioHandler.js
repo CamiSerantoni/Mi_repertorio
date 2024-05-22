@@ -36,12 +36,11 @@ export const putCancion = async (req, res) => {
     try {
        // console.log("Salid req", req)
     const {id}  = req.params;
-    console.log("Salida de req.params de PUT /cancion: ", req.params.id)
+    
     const { titulo, artista, tono } = req.body;
-    console.log("Salida de req.body de PUT /cancion: ", req.body)
-    console.log("Salida del id de la cancion: ", id)
+  
     const putData = await Put_Cancion({id,titulo, artista, tono});
-    console.log("Salida: ", putData)
+
     res.status(200).send(putData.rows);   
 } catch (error) {
     res.status(500).json({ error: "Error al actualizar la cancion" });
